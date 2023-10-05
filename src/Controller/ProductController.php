@@ -86,26 +86,32 @@ class ProductController extends AbstractController
 
         // Votre logique pour trouver l'élément correspondant à la description dans les $products
 
-        if ($description === 'discussion') {
+        if ($description === 'eco') {
+            return $this->render('SousMenu/eco.html.twig', [
+                'controller_name' => 'ProductController',
+                'products' => $products,
+                'fourProduct' => $fourProduct
+            ]);
+        }  elseif ($description === 'discussion') {
             return $this->render('SousMenu/discussion.html.twig', [
                 'controller_name' => 'ProductController',
                 'products' => $products,
                 'fourProduct' => $fourProduct
             ]);
-        } elseif ($description === 'jeux') {
-            return $this->render('SousMenu/jeux.html.twig', [
+        } elseif ($description === 'defis') {
+            return $this->render('SousMenu/defis.html.twig', [
                 'controller_name' => 'ProductController',
                 'products' => $products,
                 'fourProduct' => $fourProduct
             ]);
-        } elseif ($description === 'cours') {
-            return $this->render('SousMenu/cours.html.twig', [
+        } elseif ($description === 'partage') {
+            return $this->render('SousMenu/partage.html.twig', [
                 'controller_name' => 'ProductController',
                 'products' => $products,
                 'fourProduct' => $fourProduct
             ]);
-        } elseif ($description === 'agenda') {
-            return $this->render('SousMenu/agenda.html.twig', [
+        } elseif ($description === 'meet') {
+            return $this->render('dashboard/index.html.twig', [
                 'controller_name' => 'ProductController',
                 'products' => $products,
                 'fourProduct' => $fourProduct

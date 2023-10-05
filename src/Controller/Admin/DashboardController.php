@@ -32,7 +32,7 @@ class DashboardController extends AbstractDashboardController
     {
         // les infos concernant le dashboard :)
         return Dashboard::new()
-            ->setTitle('<h2 class="mt-3 fw-bold text-white text-center">AUTISTIC PRIME</h2>')
+            ->setTitle('<h2 class="mt-3 fw-bold text-white text-center">GREEN HOOD</h2>')
             ->renderContentMaximized();
     }
 
@@ -43,8 +43,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::section('Produits');
         yield MenuItem::subMenu('Actions', 'fas fa-bar')->setSubItems([
-            MenuItem::linkToCrud('Create Product', 'fas fa-plus-circle', Product::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Show Product', 'fas fa-eye', Product::class),]);
+            MenuItem::linkToCrud('Create EVENT', 'fas fa-plus-circle', Product::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Show EVENT', 'fas fa-eye', Product::class),]);
 
         yield MenuItem::section('Category');
         yield MenuItem::subMenu('Actions', 'fas fa-bar')->setSubItems([

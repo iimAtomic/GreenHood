@@ -1,0 +1,370 @@
+{% block body_dashboard %}
+
+
+	<nav>
+		<div id="logo"></div>
+		<div id="menu">
+			<a href="{{ path('app_product') }}">
+				<p>Acceuil</p>
+			</a>
+			<a href="{{ path('app_menu', {'description': 'discussion'}) }}">
+				<p>Discussion</p>
+			</a>
+			{% if app.user.roles ==['ROLE_ADMIN', 'ROLE_USER'] %}
+				<a href="{{ path('admin') }}">
+					<p style=" color :#A72329">Dashboard</p>
+				</a>
+			{% endif %}
+		</div>
+		{% if app.user %}
+			<a href="{{ path('app_logout') }}" style="text-decoration: none">
+				<div id="panier">
+					Deconnection
+					<img id="logout" src="{{ asset('images/logout.png') }}" alt="logout"></div>
+			</a>
+		{% endif %}
+	</nav>
+
+        <div class="dashboard-products_details">
+
+            <div id="orderContainerTop">
+                
+            </div>
+
+            <div id="containerDownMiddle">
+                <div class="tableOfStat">
+                    <div class="table-header">
+                        <div class="header__item" style="margin-left: 5px">Produits</div>
+                        <div class="header__item" style="margin-left: 150px"></div>
+
+                    </div>
+                    <div id="divProductsDetails">
+                      <div id="detailsLeft">
+
+                      </div>
+                        <div id="detailsRight">
+                            <span style="font-size: 24px ; margin-left: 5px">POTS DE JARDIN</span>
+                            <span style="margin-left: 5px;">Prix: GRATUIT</span>
+                            <span style="color: #808080;margin-bottom: 5px;margin-left: 5px"> 3</span>
+                            <div>
+                                  <span class="HoureDiv"> 10</span>
+                                  <span >:</span>
+                                  <span class="HoureDiv">34</span>
+                                  <span class="HoureDiv" style="background-color: #B4CD93">PM</span>
+                                  <span  style="font-weight: 600;font-size: 18px;">11/05/2022</span>
+                            </div>
+                            <div id="descriptionDiv">
+                                <div style="display: flex;flex-direction: row ;align-items: flex-start; width: 580px;">
+                                <p style="font-size: 20px">Description</p>
+                                <div id="trait"></div>
+                                </div>
+                                <div id ="content">
+                                    12 pots de jardin en bon etat.
+                                </div>
+                            </div>
+                            <div class="backBoutique">
+                              <button style="background-color: #7FAD39 ; border: none;width: 160px;height: 50px; border-radius: 8px">VOIR PLUS</button>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+                <div class="pagination">
+                   <a href=""> <div id="lastText"><p>Retour</p></div> </a>
+                </div>
+                {# {{ knp_pagination_render(articles) }} #}
+            </div>
+        </div>
+            </div>
+
+
+        <style>
+
+		body{
+			background-color: #17b978;
+		}
+
+		#logo {
+		width: 20%;
+		height: 69px;
+		background-image: url("{{ asset('images/bg2.png') }}");
+		background-size: cover;
+	}
+	#menu {
+		width: 400px;
+		height: 69px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 30px;
+		font-family: Trebuchet MS, serif;
+	}
+	#menu p {
+		display: inline-block;
+		position: relative;
+		text-decoration: none;
+		color: black;
+		font-weight: bold;
+		margin: 20px;
+	}
+
+	#menu p:hover:before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 4px;
+		bottom: -1px;
+		left: 0;
+		background-color: #BB7AC3;
+		transform-origin: center;
+		animation: wave 0.40s ease-out;
+	}
+
+	@keyframes wave {
+		0% {
+			transform: scale(1, 0.1);
+			opacity: 0.2;
+		}
+		100% {
+			transform: scale(1, 1);
+			opacity: 0.5;
+		}
+	}
+
+	body {
+			background-image : url("{{ asset('images/bg8.jpg') }}");
+			background-repeat : no-repeat;
+			background-size :cover;
+			margin :0;
+			}
+
+
+	#panier {
+		width: 200px;
+		height: 47px;
+		background-size: cover;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-top: 12px;
+		font-size: 18px;
+		font-family: Trebuchet MS, serif;
+		color: #222222;
+	}
+	#logout {
+		width: 80px;
+		height: 47px;
+	}
+
+	nav {
+		padding: 10px;
+		width: 100%;
+		height: 70px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: 35px;
+		background-color: #118c5b;
+		position: fixed;
+		
+	}
+
+
+            #trait{
+                border-top: 1px solid #000;
+                width : 445px;
+                margin-left: 20px;
+                margin-top: 12px;
+            }
+
+            #descriptionDiv{
+                width: 600px;
+                height: 200px;
+                display: flex;
+                margin-top: 50px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #content{
+                height: 150px;
+                width: 580px;
+            }
+
+            #divProductsDetails{
+                display: flex;
+                flex-direction: row;
+                background-color: #FCFCFC;
+                height: 560px;
+            }
+
+            #detailsLeft{
+                background-image: url("{{ asset('images/t1.jpg') }}");
+				background-size: cover;
+                width: 500px;
+                height: 500px;
+                margin: 5px;
+                padding: 10px;
+                border: 7px solid #FFF;
+            }
+
+            #detailsRight{
+                width: 700px;
+                height: 500px;
+                margin: 5px;
+                padding-left: 50px;
+                padding-top: 40px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .pagination{
+
+                width: 1050px;
+                height: 45px;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: center;
+
+            }
+            .backBoutique{
+
+                width: 650px;
+                height: 55px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-left: 450px;
+                margin-top: 20px;
+
+            }
+
+            #lastText{
+                display: flex;
+                flex-direction: row;
+                height: 30px;
+                color: #4C4C4C;
+                margin-top: 30px;
+            }
+
+
+            .dashboard-products_details{
+
+                width: 1400px;
+                align-items: center;
+                height: 900px;
+                display: flex;
+                flex-direction: column;
+            }
+
+
+            #orderContainerTop{
+                width: 1200px;
+                margin: 5px;
+                padding: 10px;
+                height: 60px;
+                display: flex;
+                flex-direction: row;
+
+            }
+
+            .details{
+                width: 260px;
+            }
+            #orderSearch{
+                border: none;
+                width: 220px;
+                background-color: #FCFCFC;
+                height: 24px;
+                margin-left: 5px;
+            }
+            .orderSearchDiv{
+                display: flex;
+                flex-direction: row;
+                width:280px;
+                height: 27px;
+                margin-left : 620px;
+                box-sizing: border-box;
+                border: 1px solid #E6E6E6;
+                border-radius: 4px;
+                background-color: #FCFCFC;
+                padding: 2px;
+                justify-content: center;
+                align-items: center;
+            }
+            .orderFiltreDiv{
+                width:80px;
+                height: 27px;
+                margin-left: 10px;
+                box-sizing: border-box;
+                border: 1px solid #E6E6E6;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #containerDownMiddle{
+                width: 1110px;
+                height: 650px;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 4px;
+                display: flex;
+                flex-direction: column;
+                margin: 10px;
+                padding: 10px;
+                align-items: center;
+                background-color: #F7F7F7;
+            }
+
+
+
+            .table-header {
+                display:flex;
+                width: 1100px;
+                padding:12px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                color: #4C4C4C;
+                background-color: #F7F7F7;
+
+            }
+
+
+            .tableOfStat {
+                width:1100px;
+                height: 600px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .header__item {
+                color: #4C4C4C;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 16px;
+            }
+            .HoureDiv{
+                width:30px;
+                height: 27px;
+                box-sizing: border-box;
+                border: 2px solid #E6E6E6;
+                border-radius: 4px;
+                margin: 5px;
+                padding: 2px;
+                font-size: 12px;
+            }
+
+
+
+        </style>
+    {% endblock %}
+
+

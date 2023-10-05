@@ -1,0 +1,712 @@
+{% block body_dashboard %}
+	<head>
+		<script src="https://kit.fontawesome.com/05f9a6db82.js" crossorigin="anonymous"></script>
+	</head>
+
+	<nav>
+		<div id="logo"></div>
+		<div id="menu">
+			<a href="{{ path('app_product') }}">
+				<p>Acceuil</p>
+			</a>
+			<a href="{{ path('app_menu', {'description': 'discussion'}) }}">
+				<p>Discussion</p>
+			</a>
+			{% if app.user.roles ==['ROLE_ADMIN', 'ROLE_USER'] %}
+				<a href="{{ path('admin') }}">
+					<p style=" color :#A72329">Dashboard</p>
+				</a>
+			{% endif %}
+		</div>
+		{% if app.user %}
+			<a href="{{ path('app_logout') }}" style="text-decoration: none">
+				<div id="panier">
+					Deconnection
+					<img id="logout" src="{{ asset('images/logout.png') }}" alt="logout"></div>
+			</a>
+		{% endif %}
+	</nav>
+
+	<p style=" margin-left: 80px;" id="titre">Ces 30 derniers jours</p>
+
+	<div class="dashboard-infos" style="margin-top: 120px;">
+
+
+		<div id="containerLeft">
+			<div id="containerTop">
+				<div class="stat">
+					<h2>4</h2>
+					<p style="margin: 0;">Lieu Favoris</p>
+				</div>
+				<div class="stat">
+					<h2>204</h2>
+					<p style="margin: 0;">Green Coins</p>
+				</div>
+				<div class="stat">
+					<h2>12</h2>
+					<p style="margin: 0;">Defis relevé</p>
+				</div>
+			</div>
+			<div id="containerMiddle">
+				<div class="details">
+					<p id="titre">Vos dernieres Réalisation</p>
+				</div>
+				<div class="searchDiv">
+					<div class="icon-wrap">
+						<svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M7.66536 13.9999C11.1632 13.9999 13.9987 11.1644 13.9987 7.66659C13.9987 4.16878 11.1632 1.33325 7.66536 1.33325C4.16756 1.33325 1.33203 4.16878 1.33203 7.66659C1.33203 11.1644 4.16756 13.9999 7.66536 13.9999Z" stroke="#4C4C4C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M14.6654 14.6666L13.332 13.3333" stroke="#4C4C4C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</div>
+					<input id="search" type="text" placeholder="Chercher une action"/>
+				</div>
+				<div class="filtreDiv"style="background-color : #fff">
+					<svg width="17" height="16" viewbox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10.047 12.7134C10.047 13.1201 9.78035 13.6534 9.44035 13.8601L8.50037 14.4668C7.62703 15.0068 6.4137 14.4001 6.4137 13.3201V9.75342C6.4137 9.28008 6.14703 8.67342 5.8737 8.34009L3.31368 5.64675C2.97368 5.30675 2.70703 4.70676 2.70703 4.30009V2.75342C2.70703 1.94675 3.31371 1.34009 4.05371 1.34009H12.947C13.687 1.34009 14.2937 1.94675 14.2937 2.68675V4.16675C14.2937 4.70675 13.9537 5.38009 13.6204 5.71342" stroke="#4C4C4C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M11.2115 11.0132C12.3897 11.0132 13.3448 10.0581 13.3448 8.87992C13.3448 7.70172 12.3897 6.74658 11.2115 6.74658C10.0333 6.74658 9.07812 7.70172 9.07812 8.87992C9.07812 10.0581 10.0333 11.0132 11.2115 11.0132Z" stroke="#4C4C4C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M13.7448 11.4132L13.0781 10.7466" stroke="#4C4C4C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					<span style="font-size: 12px">Filtrer</span>
+				</div>
+			</div>
+			<div id="containerDownMiddle">
+				<div class="tableOfStat">
+					<div class="table-header">
+						<div class="header__item">Numéro</div>
+						<div class="header__item">Status</div>
+						<div class="header__item">Date du defis</div>
+						<div class="header__item">Etat</div>
+					</div>
+					<div class="table-content">
+
+						<a href="">
+							<div class="tableRow">
+								<div class="table-data">#1</div>
+								<div class="table-data">
+									<span id="statusColors" style="background-color: #DEEDE5">NETOYAGE PARK</span>
+								</div>
+								<div class="table-data">
+									<div class="table-data">
+										<span class="HoureDiv">12</span>
+										<span style="margin-top: 10px">:</span>
+										<span class="HoureDiv">54</span>
+										<span class="HoureDiv" style="background-color: #B4CD93">PM</span>
+										<div class="table-data" style="margin-top: 10px;font-weight: 600;font-size: 14px;">05/10/2023</div>
+									</div>
+								</div>
+								<div class="table-data">Terminé</div>
+							</div>
+						</a>
+
+
+						<a href="">
+							<div class="tableRow">
+								<div class="table-data">#2</div>
+								<div class="table-data">
+									<span id="statusColors" style="background-color: #DEEDE5">NETOYAGE PARK</span>
+								</div>
+								<div class="table-data">
+									<div class="table-data">
+										<span class="HoureDiv">12</span>
+										<span style="margin-top: 10px">:</span>
+										<span class="HoureDiv">54</span>
+										<span class="HoureDiv" style="background-color: #B4CD93">PM</span>
+										<div class="table-data" style="margin-top: 10px;font-weight: 600;font-size: 14px;">05/10/2023</div>
+									</div>
+								</div>
+								<div class="table-data">Terminé</div>
+							</div>
+						</a>
+
+
+						<a href="">
+							<div class="tableRow">
+								<div class="table-data">#3</div>
+								<div class="table-data">
+									<span id="statusColors" style="background-color: #DEEDE5">NETOYAGE PARK</span>
+								</div>
+								<div class="table-data">
+									<div class="table-data">
+										<span class="HoureDiv">12</span>
+										<span style="margin-top: 10px">:</span>
+										<span class="HoureDiv">54</span>
+										<span class="HoureDiv" style="background-color: #B4CD93">PM</span>
+										<div class="table-data" style="margin-top: 10px;font-weight: 600;font-size: 14px;">05/10/2023</div>
+									</div>
+								</div>
+								<div class="table-data">Terminé</div>
+							</div>
+						</a>
+
+
+						<a href="">
+							<div class="tableRow">
+								<div class="table-data">#4</div>
+								<div class="table-data">
+									<span id="statusColors" style="background-color: #DEEDE5">NETOYAGE PARK</span>
+								</div>
+								<div class="table-data">
+									<div class="table-data">
+										<span class="HoureDiv">12</span>
+										<span style="margin-top: 10px">:</span>
+										<span class="HoureDiv">54</span>
+										<span class="HoureDiv" style="background-color: #B4CD93">PM</span>
+										<div class="table-data" style="margin-top: 10px;font-weight: 600;font-size: 14px;">05/10/2023</div>
+									</div>
+								</div>
+								<div class="table-data">Terminé</div>
+							</div>
+						</a>
+
+
+					</div>
+				</div>
+			</div>
+			<div id="containerMiddle">
+				<div class="details">
+					<p style="  margin-left: 10px;" id="titre">Vos derniers Partages</p>
+				</div>
+				<div class="details" style=" width: 290px;margin-left: 170px;">
+					<p style="  margin-left: 10px;" id="titre">Vos derniers evennements</p>
+				</div>
+			</div>
+
+			<div id="containerDown">
+				<div id="containerDownleft">
+					<div class="tableOfStat2">
+						<div class="table-header2">
+							<div class="header__item">Produits</div>
+							<div class="header__item">Date de partage</div>
+							<div class="header__item">Statut</div>
+						</div>
+						<div class="table-content">
+
+							<a href="">
+								<div class="tableRow2">
+									<div class="table-data">Pot</div>
+									<div class="table-data">
+										<span id="statusColors">12/12/2022</span>
+									</div>
+									<div class="table-data">
+										<span>Gratuit</span>
+									</div>
+								</div>
+							</a>
+
+							<a href="">
+								<div class="tableRow2">
+									<div class="table-data">Pot</div>
+									<div class="table-data">
+										<span id="statusColors">12/12/2022</span>
+									</div>
+									<div class="table-data">
+										<span>Gratuit</span>
+									</div>
+								</div>
+							</a>
+
+							<a href="">
+								<div class="tableRow2">
+									<div class="table-data">Pot</div>
+									<div class="table-data">
+										<span id="statusColors">12/12/2022</span>
+									</div>
+									<div class="table-data">
+										<span>Gratuit</span>
+									</div>
+								</div>
+							</a>
+
+						</div>
+					</div>
+				</div>
+				<div id="containerDownRight">
+					<div class="tableOfStat2">
+						<div class="table-header2">
+							<div class="header__item">Nom</div>
+							<div class="header__item">Date de début</div>
+							<div class="header__item">Place libre
+							</div>
+						</div>
+						<div class="table-content">
+							<a href="">
+								<div class="tableRow2">
+									<div class="table-data">EVENT-JARDINAGE</div>
+									<div class="table-data">
+										<span id="statusColors">06/10/2023</span>
+									</div>
+									<div class="table-data">
+										<span>23</span>
+									</div>
+								</div>
+							</a>
+
+							<a href="">
+								<div class="tableRow2">
+									<div class="table-data">EVENT-JARDINAGE</div>
+									<div class="table-data">
+										<span id="statusColors">06/10/2023</span>
+									</div>
+									<div class="table-data">
+										<span>23</span>
+									</div>
+								</div>
+							</a>
+
+							<a href="">
+								<div class="tableRow2">
+									<div class="table-data">EVENT-JARDINAGE</div>
+									<div class="table-data">
+										<span id="statusColors">06/10/2023</span>
+									</div>
+									<div class="table-data">
+										<span>23</span>
+									</div>
+								</div>
+							</a>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="containerRight">
+			<div class="Stat2">
+				<p style="    margin-bottom: 0;">Nombre d’heures : 124 h
+				</p>
+			</div>
+			<div class="Coaching-course">
+				<p style="font-weight: bold">Vos Prochains Events</p>
+				<div class="tableOfCourse">
+					<div class="tableCourse-content" style=" margin-left: -16px;">
+						<a href=" ">
+							<div class="tableCourseRow">
+								<div id="dataCourse" style="font-weight: bold">Octobre 2023</div>
+								<div id="dataCourse">12h45 / 15h25</div>
+								<div class="table-data" id="status">En attente</div>
+								<span id="date1" style=" display: none">05/10/2023</span>
+							</div>
+						</a>
+
+						<a href=" ">
+							<div class="tableCourseRow">
+								<div id="dataCourse" style="font-weight: bold">Octobre 2023</div>
+								<div id="dataCourse">12h45 / 15h25</div>
+								<div class="table-data" id="status">En attente</div>
+								<span id="date1" style=" display: none">05/10/2023</span>
+							</div>
+						</a>
+
+						<a href=" ">
+							<div class="tableCourseRow">
+								<div id="dataCourse" style="font-weight: bold">Octobre 2023</div>
+								<div id="dataCourse">12h45 / 15h25</div>
+								<div class="table-data" id="status">En attente</div>
+								<span id="date1" style=" display: none">05/10/2023</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<button style="background: #B4CD93;border-radius: 8px; padding: 7px; color:#4C4C4C ;border:none;">Voir tous mes cours</button>
+			</div>
+
+			<div class="Stat3">
+				<div class="HoureDiv">{{ "now"|date("h") }}</div>
+				<span>:</span>
+				<div class="HoureDiv">{{ "now"|date("i") }}</div>
+				<div class="HoureDiv" style="background-color: #B4CD93">PM</div>
+				<div style="margin-left: 30px">{{ "now"|date("d/m/Y") }}</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<style>
+
+
+	#logo {
+		width: 20%;
+		height: 69px;
+		background-image: url("{{ asset('images/bg2.png') }}");
+		background-size: cover;
+	}
+	#menu {
+		width: 400px;
+		height: 69px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 30px;
+		font-family: Trebuchet MS, serif;
+	}
+	#menu p {
+		display: inline-block;
+		position: relative;
+		text-decoration: none;
+		color: black;
+		font-weight: bold;
+		margin: 20px;
+	}
+
+	#menu p:hover:before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 4px;
+		bottom: -1px;
+		left: 0;
+		background-color: #BB7AC3;
+		transform-origin: center;
+		animation: wave 0.40s ease-out;
+	}
+
+	@keyframes wave {
+		0% {
+			transform: scale(1, 0.1);
+			opacity: 0.2;
+		}
+		100% {
+			transform: scale(1, 1);
+			opacity: 0.5;
+		}
+	}
+
+	body {}
+
+
+	#panier {
+		width: 200px;
+		height: 47px;
+		background-size: cover;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-top: 12px;
+		font-size: 18px;
+		font-family: Trebuchet MS, serif;
+		color: #222222;
+	}
+	#logout {
+		width: 80px;
+		height: 47px;
+	}
+
+		nav {
+		padding: 10px;
+		width: 100%;
+		height: 90px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: 35px;
+		background-color: #118c5b;
+		position: fixed;
+	}
+
+	.dashboard-infos {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	#containerTop {
+
+		width: 864px;
+		height: 120px;
+		margin: 10px;
+		display: flex;
+		flex-direction: row;
+	}
+
+	#containerLeft {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#containerRight {
+		width: 350px;
+		height: 800px;
+		margin-left: 40px;
+		margin-top: 10px;
+	}
+
+
+	.stat {
+		margin: 5px;
+		width: 290px;
+		height: 90px;
+		background-color: #118c5b;
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 8px;
+		display: flex;
+		flex-direction: column;
+		padding: 10px;
+		color: #fff;
+
+	}
+
+	.Stat2 {
+		margin: 5px;
+		width: 340px;
+		height: 70px;
+		background: #FCFCFC;
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 4px;
+		padding: 10px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+	.Stat3 {
+		margin-top: 220px;
+		width: 340px;
+		height: 70px;
+		background: #FCFCFC;
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 4px;
+		padding: 10px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+
+	}
+	.Coaching-course {
+		margin-top: 30px;
+		margin-left: 5px;
+		width: 340px;
+		height: 305px;
+		background: #FCFCFC;
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 4px;
+		padding: 10px;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+
+
+	}
+
+	#containerMiddle {
+		width: 900px;
+		margin: 5px;
+		padding: 10px;
+		height: 60px;
+		display: flex;
+		flex-direction: row;
+	}
+
+	.details {
+		width: 260px;
+	}
+
+	#containerDown {
+		display: flex;
+		flex-direction: row;
+
+
+	}
+	#containerDownMiddle {
+		width: 860px;
+		height: 200px;
+		background: #FCFCFC;
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 4px;
+		display: flex;
+		flex-direction: row;
+		margin: 10px;
+		padding: 20px;
+		justify-content: center;
+
+	}
+
+	#containerDownleft {
+		height: 200px;
+		background: #FCFCFC;
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 4px;
+		display: flex;
+		flex-direction: row;
+		margin: 10px;
+		padding: 10px;
+		align-items: center;
+		justify-content: center;
+		width: 420px;
+	}
+
+	#containerDownRight {
+		height: 200px;
+		background: #FCFCFC;
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 4px;
+		display: flex;
+		flex-direction: row;
+		margin: 10px;
+		padding: 10px;
+		align-items: center;
+		justify-content: center;
+		width: 420px;
+	}
+
+	.tableOfStat {
+		width: 770px;
+
+	}
+	.tableOfStat2 {}
+	.tableOfCourse {
+		width: 300px;
+		margin-bottom: 30px;
+		/* height: 620px; */
+		display: flex;
+
+	}
+
+	.tableCourseRow {
+		display: flex;
+		padding: 5px;
+		font-size: 12px;
+		margin: 20px;
+	}
+	.table-header {
+		display: flex;
+		width: 780px;
+		padding: 2px;
+		font-weight: bold;
+		margin-bottom: 10px;
+		color: #4C4C4C;
+
+	}
+	.table-header2 {
+		display: flex;
+		width: 400px;
+		padding: 2px;
+		font-weight: bold;
+		margin-bottom: 10px;
+		color: #4C4C4C;
+
+	}
+
+	.tableRow {
+		display: flex;
+		font-size: 12px;
+		width: 780px;
+		padding: 5px;
+		border-bottom: 1px solid #F2F2F2;
+		align-items: center;
+	}
+	.tableRow2 {
+		display: flex;
+		font-size: 12px;
+		width: 400px;
+		padding: 5px;
+		border-bottom: 1px solid #F2F2F2;
+		align-items: center;
+	}
+
+
+	.table-data,
+	.header__item {
+		flex: 1 1 20%;
+		text-align: center;
+	}
+
+	.header__item {
+		color: #4C4C4C;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 16px;
+	}
+
+
+	.searchDiv {
+		display: flex;
+		flex-direction: row;
+		width: 280px;
+		height: 27px;
+		margin-left: 226px;
+		box-sizing: border-box;
+		border: 1px solid #E6E6E6;
+		border-radius: 4px;
+		background-color: #FCFCFC;
+		padding: 2px;
+		justify-content: center;
+		align-items: center;
+	}
+	.filtreDiv {
+		width: 80px;
+		height: 27px;
+		margin-left: 10px;
+		box-sizing: border-box;
+		border: 1px solid #E6E6E6;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.HoureDiv {
+		width: 30px;
+		height: 27px;
+		box-sizing: border-box;
+		border: 1px solid #E6E6E6;
+		border-radius: 4px;
+		margin: 5px;
+		padding: 2px;
+		font-size: 12px;
+	}
+
+	#search {
+		border: none;
+		width: 220px;
+		background-color: #FCFCFC;
+		height: 24px;
+		margin-left: 5px;
+	}
+
+	.table-data {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		color: #808080;
+	}
+
+	#statusColors {
+		padding: 3px;
+		border-radius: 4px;
+	}
+
+	#dataCourse {
+		width: 100px;
+	}
+
+	#titre {
+		    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    /* line-height: 29px; */
+    color: #fff;
+}
+	
+
+
+	body {
+			background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ asset('images/bg8.jpg') }}");
+			background-repeat : no-repeat;
+			background-size :cover;
+			margin : 0;
+		}
+</style>
+
+<script>
+	let container = document.getElementById('tableRow2');
+let status = document.getElementById('status');
+const now = new Date();
+const creneauDate = new Date(creneau.getElementById('date1').textContent);
+if (creneauDate < now) {
+status.textContent = "Terminé";
+} else {
+status.textContent = "A venir";
+}
+</script>{% endblock %}
